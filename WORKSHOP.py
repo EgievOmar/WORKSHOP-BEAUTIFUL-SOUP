@@ -20,6 +20,10 @@ def exercise_1(url_exercise1):
 # Extrais les titres des 250 meilleurs films de tous les temps
 def exercise_2(url_exercise2):
     response = beautiful_requests(url_exercise2)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    titles = [i.text for i in soup.find_all("td", class_="titleColumn")]
+    for title in titles[:250]:
+        print(title)
 
 
 # Exercise 3
